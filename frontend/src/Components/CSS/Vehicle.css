@@ -1,0 +1,19 @@
+.vehicleRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 0;
+}
+
+.vehicleImg {
+    display: flex;
+    justify-items: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.vehicle {
+    height: 18vh;
+    width: 20vw;
+    padding: 0%;
+}

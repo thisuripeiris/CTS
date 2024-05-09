@@ -1,0 +1,19 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "2-year 2-semester IT project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node Server.js",
+    "dev": "node Server.js"
+  },
+  "author": "Savindu, Sheshan, Kanzurr, Dilshan, Imethma, Thisuri, Nimasha",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.2",
+    "nodemon": "^3.1.0"
+  }
+}

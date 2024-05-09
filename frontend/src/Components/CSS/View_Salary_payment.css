@@ -1,0 +1,123 @@
+
+
+.Viewpage{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+h1{
+    font-family: 'Roboto-Light'; /* Font family name */
+}
+.VSrow1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100vw;
+    font-family: 'Roboto-Light'; /* Font family name */
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.VSrow2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    font-family: 'Roboto-Light'; /* Font family name */
+    font-size: 1rem;
+    color: rgb(128, 133, 133);
+}
+h4{
+    width: 10vw;
+    margin-left: 0;
+    margin-right: 0;
+}
+#Vupdate,#Vdelete,#VPDF{
+    width: 10vw;
+    margin-left: 0;
+    margin-right: 0;
+    transition: 1s;
+}
+#Vdelete{
+    background-color: red;
+    border: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+#Vupdate{
+    background-color: rgb(12, 189, 50);
+    border: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+#VPDF{
+    background-color:#FF7E07;
+    border: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+#Vupdate:hover,#Vdelete:hover,#VPDF:hover{
+   transform: scale(1.2);
+}
+.mainrow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 0;
+}
+#VSPReturn{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: #eb0808;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    transition: 0.6s;
+    cursor: pointer;
+}
+.generate-pdf-btn {
+    /* Add your styles for the generate PDF button */
+    background-color: #007bff;
+    color: #fff;
+    width: 100px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.return-btn {
+    /* Add your styles for the return button */
+    background-color: #dc3545;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-btn {
+    /* Add your styles for the delete button */
+    background-color: #ff6347;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}

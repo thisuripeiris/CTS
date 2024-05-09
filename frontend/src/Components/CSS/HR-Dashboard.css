@@ -1,0 +1,90 @@
+
+
+body{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+.HR-Dashboard{
+    display: flex;
+    flex-direction: column;
+}
+a{
+    text-decoration: none;
+}
+.HRManager-Dashboard{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+.HR-Column1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90vw;
+    height: 80vh;
+}
+.HRManager-Dashboard img{
+    width:80px;
+    height: 80px;
+    margin-top: 1rem;
+}
+
+.HRManager-Dashboard h1{
+    font-size: 1.5rem;
+    color: #363636;
+    margin-bottom: 1rem;
+    font-family: 'Roboto-Light'; /* Font family name */
+    transition: 1.5s;
+}
+.R1,.R2,.R3,.R4,.R5{
+    width: 15%;
+    border-radius: 10px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    transition: 1.5s;
+    border: 2px solid #FF7E07;
+    cursor: pointer;
+
+}
+.R1:hover, .R2:hover, .R3:hover ,.R4:hover,.R5:hover{
+    background-color: #FF7E07;
+}
+.HRManager-Dashboard h1:hover{
+    color: white;
+}
+.HR-Column2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 90vw;
+    height: 80vh;
+}
+
+#HR-Column2{
+    display: none;
+}
+
+
+#HRReturn{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: #FF7E07;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    transition: 0.6s;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+#HRReturn:hover{
+    transform: scale(1.5);
+}

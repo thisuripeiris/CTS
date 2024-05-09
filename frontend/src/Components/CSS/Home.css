@@ -1,0 +1,21 @@
+/* Define unique class name */
+.custom-profile-button {
+    /* Styles for the button */
+    background-color: #4CAF50; /* Green background */
+    border: none;/* No border */
+    width: 100px;
+    
+    color: white; /* White text */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Make it inline */
+    font-size: 14px; /* Font size */
+    padding: 8px 14px; /* Padding */
+    border-radius: 20px; /* Rounded corners */
+    cursor: pointer; /* Cursor style */
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.custom-profile-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
