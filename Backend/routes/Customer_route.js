@@ -3,47 +3,47 @@ const Customer = require("../models/Customer");
 const router = require("express").Router();
 
 
-router.route("/Add").post((req,res) => {
+router.route("/Add").post((req, res) => {
 
     const {
         firstName,
         lastName,
-        
+
         tel,
         password,
         email,
         city,
         address,
-     
+
     } = req.body;
 
     const newCustomer = new Customer({
-        
+
         firstName,
         lastName,
-        
+
         tel,
         password,
         email,
         city,
         address,
-        
+
     });
 
     newCustomer.save()
-        .then(()=>{
+        .then(() => {
             res.json("New Customer Added");
-        }) 
-        .catch((err)=>{
+        })
+        .catch((err) => {
             console.log(err);
             res.status(500).json("Error adding new Customer");
-        })   
+        })
 
 });
 
-router.route("/").get((req,res) => {
+router.route("/").get((req, res) => {
     Customer.find()
-        .then((customers)=> {
+        .then((customers) => {
             res.json(customers)
         })
         .catch((err) => {
@@ -52,12 +52,12 @@ router.route("/").get((req,res) => {
         })
 });
 
-router.route("/update/:id").put(async (req,res) =>{
+router.route("/update/:id").put(async (req, res) => {
     const {
-        
+
         firstName,
         lastName,
-        
+
         tel,
         password,
         email,
@@ -68,107 +68,66 @@ router.route("/update/:id").put(async (req,res) =>{
     const cusid = req.params.id;
 
     const updatecus = new Customer({
-        _id:cusid,
+        _id: cusid,
         firstName,
         lastName,
-        
+
         tel,
         password,
         email,
         city,
         address,
-        _v:0
-        
+        _v: 0
+
 
     });
 
-    try{
-        await Customer.findByIdAndUpdate(cusid,updatecus);
+    try {
+        await Customer.findByIdAndUpdate(cusid, updatecus);
         res.status(200).send({ status: "Customer Updated" });
     }
-    catch(err){
+    catch (err) {
         console.log(err);
         res.status(500).json({ status: "Error with Update" });
     }
 
 });
 
-// router.route("/update/:id").put(async (req,res) =>{
-//     const {
-//         RID,
-//         firstName,
-//         lastName,
-//         details,
-//         tel,
-//         email
-//     } = req.body;
-
-//     const empid = req.params.id;
-
-//     const updateemp = {
-//         RID,
-//         firstName,
-//         lastName,
-//         details,
-//         tel,
-//         email,
-//         _v: 0 // Assuming you meant "__v" here, not "_v"
-//     };
-
-//     try {
-//         // Use $set to update only the specified fields
-//         await Employer.findByIdAndUpdate(empid, { $set: updateemp });
-//         res.status(200).send({ status: "Employer Updated" });
-//     } catch(err) {
-//         console.log(err);
-//         res.status(500).json({ status: "Error with Update" });
-//     }
-// });
 
 
-router.route("/delete/:id").delete(async(req,res)=>{
+router.route("/delete/:id").delete(async (req, res) => {
     const cusid = req.params.id;
 
-    await Customer.findByIdAndDelete(cusid).then(()=>{
-        res.status(200).send({status:"Customer Deleted"})
+    await Customer.findByIdAndDelete(cusid).then(() => {
+        res.status(200).send({ status: "Customer Deleted" })
     })
-    .catch((err)=>{
-        console.log(err);
-        res.status(500).send({status: "Error with Customer deletion"})
-    })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with Customer deletion" })
+        })
 })
 
-// router.route("/get/:id").get(async(req,res) => {
-//     const cusid = req.params.id;
-//     try{
-//         const customers = await Customer.find({_id:cusid});
-//         res.status(200).send({ status: "Customer fetch", data: customers });
-//     }catch (err) {
-//         console.log(err);
-//         res.status(500).send({ status: "Error Customer fetch" });
-//       }
-// })
 
-router.route("/get/:id").get(async(req,res) => {
+router.route("/get/:id").get(async (req, res) => {
     const cusid = req.params.id;
-    try{
-        const customers = await Customer.find({email:cusid});
+    try {
+        const customers = await Customer.find({ email: cusid });
         res.status(200).send({ status: "Customer fetch", data: customers });
-    }catch (err) {
+    } catch (err) {
         console.log(err);
         res.status(500).send({ status: "Error Customer fetch" });
-      }
+    }
 })
 
 router.post("/LOG", async (req, res) => {
     const { email, password } = req.body;
-    
+
     try {
         const user = await Customer.findOne({ email, password });
 
         if (user) {
-           // res.json("exist");
-           res.json({ status: "exist"}); // Send position along with the response
+            // res.json("exist");
+            res.json({ status: "exist" }); // Send position along with the response
 
         } else {
             res.json("notexist");

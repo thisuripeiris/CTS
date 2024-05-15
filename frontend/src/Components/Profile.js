@@ -1,47 +1,38 @@
-
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import { useUser } from '../UserContext';
 import { Link, useLocation } from 'react-router-dom';
-
+import Payment from "../Screens/Payment";
 
 export default function ProfileView() {
     const location = useLocation();
     const { id, email } = location.state || {};
 
-    const { Email } = useState(); // Assuming useUser provides the user's email
     const [profiles, setProfiles] = useState([]);
-    //const [id] = useState(location.state?.id || '');
-
     const [ID, setId] = useState('');
-    const [firstName, setfirstName] = useState('');
-    const [lastName, setlastName] = useState('');
-    const [address, setaddress] = useState('');
-    const [city, setcity] = useState('');
-    const [tel, settel] = useState('');
-    const [password, setpassword] = useState('');
-    // const [email, setemail] = useState('');
-    const [details, setdetails] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [address, setAddress] = useState('');
+    const [city, setCity] = useState('');
+    const [tel, setTel] = useState('');
+    const [password, setPassword] = useState('');
+    const [details, setDetails] = useState('');
 
-    console.log("ID:" + id)
     useEffect(() => {
         async function getProfiles() {
             try {
-                const res = await axios.get(`http://localhost:5001/Customer/get?email=${Email}`);
+                const res = await axios.get(`http://localhost:5001/Customer/get?email=${email}`);
                 console.log("Response:", res.data);
 
                 if (res.data.status === "Customer fetch") {
                     const profileData = res.data.data;
                     setProfiles([profileData]);
-                    setfirstName(profileData.firstName);
-                    setlastName(profileData.lastName);
-                    setaddress(profileData.address);
-                    setcity(profileData.city);
-                    setpassword(profileData.password);
-                    settel(profileData.tel);
-                    // setemail(profileData.email);
-                    setdetails(profileData.details);
+                    setFirstName(profileData.firstName);
+                    setLastName(profileData.lastName);
+                    setAddress(profileData.address);
+                    setCity(profileData.city);
+                    setPassword(profileData.password);
+                    setTel(profileData.tel);
+                    setDetails(profileData.details);
                     setId(profileData._id);
                 } else {
                     console.error("Request failed with message:", res.data.message);
@@ -51,7 +42,7 @@ export default function ProfileView() {
             }
         }
         getProfiles();
-    }, [Email]);
+    }, [email]);
 
     function sendData(e) {
         e.preventDefault();
@@ -103,14 +94,14 @@ export default function ProfileView() {
                                     placeholder="First Name"
                                     id="First_Name"
                                     value={profile1.firstName}
-                                    onChange={(e) => setfirstName(e.target.value)}
+                                    onChange={(e) => setFirstName(e.target.value)}
                                 ></input>
                                 <input
                                     type="text"
                                     placeholder="Last Name"
                                     id="Last_Name"
                                     value={profile1.lastName}
-                                    onChange={(e) => setlastName(e.target.value)}
+                                    onChange={(e) => setLastName(e.target.value)}
                                 ></input>
                             </div>
                             <div className="row">
@@ -119,39 +110,23 @@ export default function ProfileView() {
                                     placeholder="Address"
                                     id="Address"
                                     value={profile1.address}
-                                    onChange={(e) => setaddress(e.target.value)}
+                                    onChange={(e) => setAddress(e.target.value)}
                                 ></input>
                                 <input
                                     type="text"
                                     placeholder="Phone"
                                     id="Phone"
                                     value={profile1.tel}
-                                    onChange={(e) => settel(e.target.value)}
+                                    onChange={(e) => setTel(e.target.value)}
                                 ></input>
                             </div>
                             <div className="row">
-                                {/* <input
-                                    type="text"
-                                    placeholder="Email"
-                                    id="Email"
-                                    value={profile1.email}
-                                     onChange={(e) => setemail(e.target.value)}
-                                >
-                                    
-                                </input> */}
-                                {/* <input
-                                    type="text"
-                                    placeholder="Passport Number"
-                                    id="Passport"
-                                    value={profile1.Passport_Number}
-                                     onChange={(e) => settel(e.target.value)}
-                                ></input> */}
                                 <input
                                     type="text"
                                     placeholder="details"
                                     id="Passport"
                                     value={profile1.details}
-                                    onChange={(e) => setdetails(e.target.value)}
+                                    onChange={(e) => setDetails(e.target.value)}
                                 ></input>
                             </div>
                             <div className="row">
@@ -160,14 +135,14 @@ export default function ProfileView() {
                                     placeholder="Password"
                                     id="Password"
                                     value={profile1.password}
-                                    onChange={(e) => setpassword(e.target.value)}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 ></input>
                                 <input
                                     type="text"
                                     placeholder="city"
                                     id="Age"
                                     value={profile1.city}
-                                    onChange={(e) => setcity(e.target.value)}
+                                    onChange={(e) => setCity(e.target.value)}
                                 ></input>
                                 <input style={{ display: "none" }}
                                     type="text"
@@ -190,8 +165,7 @@ export default function ProfileView() {
                     <button style={{ marginLeft: "auto", marginRight: "auto", paddingTop: "0.3rem", paddingBottom: "0.3rem", color: "red", fontSize: "1.5rem", cursor: "pointer" }} id="Vdelete" onClick={() => handleDelete(profile1._id)}>Delete</button>
                 </div>
             ))}
+            <Payment customerDetails={profiles[0]} /> {/* Display Payment component */}
         </div>
     );
 }
-
-

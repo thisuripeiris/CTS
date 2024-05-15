@@ -1,31 +1,18 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { useCart, useDispatchCart } from '../Components/ContextReducer';
 
 const Cart = () => {
+    const navigate = useNavigate(); // Initialize useNavigate
     const data = useCart();
     const dispatch = useDispatchCart();
 
     const handleCheckout = async () => {
         try {
-            const response = await fetch('http://localhost:5000/orderData', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    items: data,
-                    order_date: new Date().toDateString(),
-                    totalPrice: calculateTotalPrice(data)
-                })
-            });
-
-            console.log("Order Response: ", response);
-            if (response.ok) {
-                console.log('Order placed successfully!');
-                dispatch({ type: "DROP" });
-            } else {
-                console.error('Failed to place order');
-            }
+            // Calculate total price
+            const totalPrice = calculateTotalPrice(data);
+            // Navigate to Payment.js
+            navigate('/payment');
         } catch (error) {
             console.error('Error:', error);
         }
@@ -52,7 +39,7 @@ const Cart = () => {
                         <th scope='col'>Code</th>
                         <th scope='col'>Quantity</th>
                         <th scope='col'>Price</th>
-                        <th scope='col'></th>
+                        <th scope='col'>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,14 +49,16 @@ const Cart = () => {
                             <td>{item.code}</td>
                             <td>{item.qty}</td>
                             <td>{item.qty * item.price}</td>
-                            <td><button type='button' className='btn p-0 bg-danger' onClick={() => { dispatch({ type: "REMOVE", index: index }) }}>Remove</button></td>
+                            <td>
+                                <button type='button' className='btn btn-danger' onClick={() => { dispatch({ type: "REMOVE", index: index }) }}>Remove</button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            <div><h1 className='fs-2'>Total Price: {calculateTotalPrice(data)}</h1></div>
-            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <button className='btn bg-success m-5' onClick={handleCheckout}>Checkout</button>
+            <div className='text-end'>
+                <div><h1 className='fs-2'>Total Price: {calculateTotalPrice(data)}</h1></div>
+                <div><button className='btn btn-success' onClick={handleCheckout}>Checkout</button></div>
             </div>
         </div>
     );

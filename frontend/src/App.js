@@ -10,6 +10,7 @@ import ThreeWheel from "./Screens/Vehicles/ThreeWheel";
 import Motorcycle from "./Screens/Vehicles/Motorcycle";
 import { CartProvider } from "./Components/ContextReducer";
 import Modal from "./Modal";
+import Payment from "./Screens/Payment";
 
 
 import Product_Payment from "./Components/Product_Payment";
@@ -68,15 +69,15 @@ function App() {
       <Router>
         <div>
           <Routes>
-            <Route exact path="/" element={<Home />} />
+            <Route exact path="/Home" element={<Home />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/AboutUs" element={<AboutUs />} />
             {/* <Route exact path="/myOrders" element={<MyOrders />} /> */}
             <Route exact path="/Car" element={<Car />} />
             <Route exact path="/ThreeWheel" element={<ThreeWheel />} />
             <Route exact path="/Motorcycle" element={<Motorcycle />} />
-            {/* <Route exact path="/Cart" element={<Cart />} /> */}
             <Route exact path="/Cart" element={<Modal />} />
+            <Route path="/payment" element={<Payment />} />
 
             <Route path='/StaffLogin' element={<StaffLogon />} />
             <Route path='/Product_Payment' element={<Product_Payment />} />

@@ -22,7 +22,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link className="navbar-brand fs-2" to="/">
+        <Link className="navbar-brand fs-2" to="/Home">
           CTS
         </Link>
         <button
@@ -40,7 +40,7 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <Link className="nav-link active" aria-current="page" to="/Home">
                 Home
               </Link>
             </li>
