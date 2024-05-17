@@ -42,7 +42,7 @@ export default function Headers() {
 
     return (
         <header className="Staff-header" style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", fontSize: "1.5rem", marginTop: "1rem" }}>
-            <span id="logout" style={{ }}>Log Out</span>
+            <span id="logout" style={{}}>Log Out</span>
             <div className="headerrow1">
                 <span id="dashboard">Dashboard</span>
             </div>

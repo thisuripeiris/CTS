@@ -1,7 +1,4 @@
-
-
-
-.Staff-header{
+.Staff-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -12,16 +9,18 @@
     cursor: pointer;
 }
 
-#logout{
+#logout {
     border: 1px solid #FF7E07;
     padding: 0.5rem;
     border-radius: 5px;
     transition: 1s;
 }
-#logout:hover{
+
+#logout:hover {
     border: 1px solid white
 }
-#dashboard{
+
+#dashboard {
     border: 1px solid white;
     padding: 0.5rem;
     border-radius: 5px;
@@ -29,9 +28,9 @@
     background-color: #FF7E07;
     color: white;
 }
-#dashboard
-    :hover{
-        background-color: white;
-        border: 1px solid FF7E07;
-        color: #FF7E07;
-    }
+
+#dashboard :hover {
+    background-color: white;
+    border: 1px solid FF7E07;
+    color: #FF7E07;
+}

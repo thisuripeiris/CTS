@@ -4,8 +4,12 @@ const Order = require('../models/Order');
 
 router.post('/', async (req, res) => {
     try {
-        const { items, totalPrice } = req.body;
+        const { firstName, lastName, email, address, items, totalPrice } = req.body;
         const order = new Order({
+            firstName,
+            lastName,
+            email,
+            address,
             items,
             totalPrice
         });
