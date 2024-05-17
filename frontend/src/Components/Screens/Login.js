@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import "../CSS/Login.css";
 import axios from "axios";
-import { useUser } from './Customer_context';
+import { useUser } from '../../userContext';
 
 const StaffLogon = () => {
   const [password, setPassword] = useState("");
@@ -47,6 +47,8 @@ const StaffLogon = () => {
           setLoginMessage("Login successful!");
           setIsSuccess(true);
           navigate("/Home", { state: { id: email } });
+          setEmail(email); // Set the email in the context
+
         } else {
           setLoginMessage("Invalid email or password.");
           setIsSuccess(false);

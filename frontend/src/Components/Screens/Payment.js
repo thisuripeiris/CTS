@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from 'react-router-dom';
 import { useCart } from '../ContextReducer'; // Import the cart context
-// Import the user context
+import { useUser } from '../../userContext';
 
 const Payment = () => {
     const location = useLocation();
     const { id } = location.state || {};
 
-    const email = "tnp@gmail.com"
+    // const email = "tnp@gmail.com"
 
-
+    const { email } = useUser()
 
     const [profile, setProfile] = useState({
         _id: '',
@@ -49,7 +49,7 @@ const Payment = () => {
         getProfile();
     }, [email]);
 
-
+    // console.log(firstName, lastName, email, address, date, price)
 
 
 
@@ -63,21 +63,39 @@ const Payment = () => {
         setFormData(prevState => ({ ...prevState, [name]: value }));
     };
 
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        setFormData(prevState => ({ ...prevState, slip: file }));
-    };
+    // const handleFileChange = (e) => {
+    //     const file = e.target.files[0];
+    //     setFormData(prevState => ({ ...prevState, slip: file }));
+    // };
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     // Here you can implement your submission logic
+    //     // Example: submit form data using axios
+    //     console.log(formData);
+    //     // navigate('/success'); // Redirect to success page after submission
+    // };
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Here you can implement your submission logic
-        // Example: submit form data using axios
-        console.log(formData);
-        // navigate('/success'); // Redirect to success page after submission
+        try {
+            // Send payment data to backend
+            await axios.post('http://localhost:8000/orderData', {
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                email: profile.email,
+                address: formData.address,
+                items: cart.map(item => ({ code: item.code, qty: item.qty, price: item.price })),
+                totalPrice: cart.reduce((total, item) => total + (item.qty * item.price), 0)
+            });
+            alert('Payment successful!'); // Alert user of successful payment
+            // Redirect user to success page or perform any other action
+        } catch (error) {
+            console.error('Failed to make payment:', error);
+            alert('Failed to make payment');
+        }
     };
-
-
-
 
     return (
         <div className="container d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
