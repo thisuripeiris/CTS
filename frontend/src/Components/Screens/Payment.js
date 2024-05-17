@@ -82,10 +82,10 @@ const Payment = () => {
         try {
             // Send payment data to backend
             await axios.post('http://localhost:8000/orderData', {
-                firstName: formData.firstName,
-                lastName: formData.lastName,
+                firstName: profile.firstName,
+                lastName: profile.lastName,
                 email: profile.email,
-                address: formData.address,
+                address: profile.address,
                 items: cart.map(item => ({ code: item.code, qty: item.qty, price: item.price })),
                 totalPrice: cart.reduce((total, item) => total + (item.qty * item.price), 0)
             });
