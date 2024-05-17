@@ -14,6 +14,7 @@ import Update_Profile from "./Components/Screens/EditProfile";
 import Login from "./Components/Screens/Login";
 import Signup from "./Components/Screens/Signup";
 import Payment from "./Components/Screens/Payment";
+import MyOrders from "./Components/Screens/MyOrders";
 
 
 
@@ -28,7 +29,7 @@ function App() {
           <Routes>
             <Route exact path="/Home" element={<Home />} />
             <Route exact path="/AboutUs" element={<AboutUs />} />
-            {/* <Route exact path="/myOrders" element={<MyOrders />} /> */}
+            <Route exact path="/myOrders" element={<MyOrders />} />
             <Route exact path="/Car" element={<Car />} />
             <Route exact path="/ThreeWheel" element={<ThreeWheel />} />
             <Route exact path="/Motorcycle" element={<Motorcycle />} />

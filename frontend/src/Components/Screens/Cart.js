@@ -1,17 +1,14 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import { useCart, useDispatchCart } from '../ContextReducer';
 
-
 const Cart = () => {
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate();
     const data = useCart();
     const dispatch = useDispatchCart();
 
     const handleCheckout = async () => {
         try {
-            // Calculate total price
-            const totalPrice = calculateTotalPrice(data);
             // Navigate to Payment.js
             navigate('/payment');
         } catch (error) {
@@ -25,9 +22,7 @@ const Cart = () => {
 
     if (data.length === 0) {
         return (
-            <div>
-                <div className='m-5 w-100 text-center fs-3'>The Cart is Empty!</div>
-            </div>
+            <div className="m-5 w-100 text-center fs-3">The Cart is Empty!</div>
         );
     }
 
@@ -58,12 +53,8 @@ const Cart = () => {
                 </tbody>
             </table>
             <div className='text-end'>
-                <div><h1 className='fs-2'>Total Price: {calculateTotalPrice(data)}</h1></div>
-                <div><button className='btn btn-success' onClick={handleCheckout}>Checkout</button></div>
-
-
-
-
+                <h3 className='fs-2'>Total Price: {calculateTotalPrice(data)}</h3>
+                <button className='btn btn-success' onClick={handleCheckout}>Checkout</button>
             </div>
         </div>
     );

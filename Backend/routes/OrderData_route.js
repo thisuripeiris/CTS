@@ -19,7 +19,22 @@ router.post('/', async (req, res) => {
         console.error(err);
         res.status(500).json({ error: 'Failed to save order data' });
     }
-})
+}),
+
+
+
+    router.get('/get/:email', async (req, res) => {
+        const email = req.params.email;
+        try {
+            const orders = await Order.find({ email }).sort({ createdAt: -1 });
+            res.json(orders);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json({ error: 'Failed to fetch orders' });
+        }
+    });
+
+
 
 
 module.exports = router;

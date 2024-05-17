@@ -8,7 +8,6 @@ import { useCart } from '../ContextReducer';
 const Navbar = ({ isLoggedIn, email, logout }) => {
 
   let data = useCart();
-
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -38,7 +37,7 @@ const Navbar = ({ isLoggedIn, email, logout }) => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link className="nav-link active" aria-current="page" to="/Home">
                 Home
@@ -56,27 +55,33 @@ const Navbar = ({ isLoggedIn, email, logout }) => {
             </li>
           </ul>
 
+        </div>
+
+
+        <div>
           {/* Conditionally render Profile and Logout buttons */}
           {isLoggedIn && (
-            <div className="d-flex">
+            <div className="d-flex align-items-center">
               <Link to={{ pathname: "/ProfileView", state: { id: isLoggedIn, email: email } }} className="nav-link me-2">
                 <button className="btn btn-secondary">Profile</button>
               </Link>
-              <button className="btn btn-danger" onClick={logout}>Logout</button>
+              <button className="btn btn-danger me-2" onClick={logout}>Logout</button>
             </div>
           )}
-
           {/* Cart Link */}
-          <button className="btn btn-primary" onClick={openModal}>
-            <i className="bi bi-cart-fill me-1">
-              <Badge pill bg="danger">{data.length}</Badge>
-            </i>
+          <button className="btn btn-outline-light position-relative" onClick={openModal}>
+            <i className="bi bi-cart-fill"></i>
+            {data.length > 0 && (
+              <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle">
+                {data.length}
+              </Badge>
+            )}
           </button>
-
-          {/* Render Modal based on modalOpen state */}
-          {modalOpen && <Modal onClose={closeModal}><Cart /></Modal>}
         </div>
       </div>
+
+      {/* Render Modal based on modalOpen state */}
+      {modalOpen && <Modal onClose={closeModal}><Cart /></Modal>}
     </nav>
   );
 };
