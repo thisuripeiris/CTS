@@ -1,2 +1,0 @@
-# Continental-Tyre-services
-2-year, 2-semester ITP Module group project. We are creating the Continental Tyre Services Group Project using Mern Stack Technology. Group members are Savindu, Sheshan, Kanzurrizk,Thisuri, Imethma, and Nimasha.

@@ -11,7 +11,7 @@ export default function ProductCards({ vehicleType }) {
     const [selectedCategory, setSelectedCategory] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:5001/Product')
+        axios.get('http://localhost:8000/Product')
             .then(response => {
                 setProducts(response.data);
             })
@@ -19,7 +19,7 @@ export default function ProductCards({ vehicleType }) {
                 console.error('Error fetching products:', error);
             });
 
-        axios.get('http://localhost:5001/ProductType')
+        axios.get('http://localhost:8000/ProductType')
             .then(response => {
                 setProductTypes(response.data);
             })

@@ -93,6 +93,37 @@ router.route("/update/:id").put(async (req, res) => {
 
 });
 
+// router.route("/update/:id").put(async (req,res) =>{
+//     const {
+//         RID,
+//         firstName,
+//         lastName,
+//         details,
+//         tel,
+//         email
+//     } = req.body;
+
+//     const empid = req.params.id;
+
+//     const updateemp = {
+//         RID,
+//         firstName,
+//         lastName,
+//         details,
+//         tel,
+//         email,
+//         _v: 0 // Assuming you meant "__v" here, not "_v"
+//     };
+
+//     try {
+//         // Use $set to update only the specified fields
+//         await Employer.findByIdAndUpdate(empid, { $set: updateemp });
+//         res.status(200).send({ status: "Employer Updated" });
+//     } catch(err) {
+//         console.log(err);
+//         res.status(500).json({ status: "Error with Update" });
+//     }
+// });
 
 
 router.route("/delete/:id").delete(async (req, res) => {
@@ -107,6 +138,16 @@ router.route("/delete/:id").delete(async (req, res) => {
         })
 })
 
+// router.route("/get/:id").get(async(req,res) => {
+//     const cusid = req.params.id;
+//     try{
+//         const customers = await Customer.find({_id:cusid});
+//         res.status(200).send({ status: "Customer fetch", data: customers });
+//     }catch (err) {
+//         console.log(err);
+//         res.status(500).send({ status: "Error Customer fetch" });
+//       }
+// })
 
 router.route("/get/:id").get(async (req, res) => {
     const cusid = req.params.id;

@@ -12,7 +12,7 @@ const CustomerSchema = new Schema({
     type: String,
     required: true
   },
-  password:{
+  password: {
     type: String,
     required: true
   },
@@ -43,8 +43,8 @@ const CustomerSchema = new Schema({
   }
 });
 
-const Customer = mongoose.model("Customer",CustomerSchema)
+const Customer = mongoose.model("Customer", CustomerSchema)
 
-module.exports =Customer;
+module.exports = Customer;
 
 // module.exports = mongoose.model('Supplier', SupplierSchema);
