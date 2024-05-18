@@ -67,7 +67,7 @@ const Payment = () => {
             // Clear cart after successful payment
             dispatch({ type: "CLEAR_CART" });
             // Navigate to home page
-            navigate('/home');
+            navigate('/MyOrders');
             alert('Payment successful!');
         } catch (error) {
             console.error('Failed to make payment:', error);
@@ -116,3 +116,4 @@ const Payment = () => {
 };
 
 export default Payment;
+

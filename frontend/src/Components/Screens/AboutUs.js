@@ -5,7 +5,8 @@ import Navbar from './Navbar';
 
 const AboutUsPage = () => {
   return (
-    <div><Navbar />
+    <div>
+      {/* <Navbar /> */}
       <div className="container py-5">
 
         <div className="row">

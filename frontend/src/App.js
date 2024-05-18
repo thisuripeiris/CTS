@@ -15,6 +15,7 @@ import Login from "./Components/Screens/Login";
 import Signup from "./Components/Screens/Signup";
 import Payment from "./Components/Screens/Payment";
 import MyOrders from "./Components/Screens/MyOrders";
+import OperationsManagerDashboard from "./Components/OperationManager/OperationsManagerDashboard";
 
 
 
@@ -35,6 +36,9 @@ function App() {
             <Route exact path="/Motorcycle" element={<Motorcycle />} />
             <Route exact path="/Cart" element={<Modal />} />
             <Route path="/payment" element={<Payment />} />
+
+            <Route path="/OperationsManagerDashboard" element={<OperationsManagerDashboard />} />
+
 
 
             <Route path='/Login' element={<Login />} />

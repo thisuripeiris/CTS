@@ -7,6 +7,8 @@ import Navbar from './Navbar'
 import Footer from '../Footer'
 import Carousal from '../Carousal'
 import Vehicle from '../VehicleBar'
+import FeedbackCarousel from "../feedbackCarousel";
+import AboutUsPage from "./AboutUs";
 // import "../CSS/Home.css"
 
 
@@ -56,6 +58,8 @@ export default function Home() {
         <div><Navbar /></div>
         <div><Carousal /></div>
         <div><Vehicle /></div>
+        {/* <div><FeedbackCarousel /></div> */}
+        <div><AboutUsPage /></div>
         <div><Footer /></div>
       </main>
 
